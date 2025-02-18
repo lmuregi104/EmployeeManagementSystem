@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Employee</title>
+    <link rel = "stylesheet"
+        href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class = "container my-2" align = "center">
+    <h3>Employee list</h3>
+    <a th:href="@{/add}" class="btn btn-primary btn-sm mb-3">Add Employee</a>
+    <table style = "width:80%" border="1"
+           class = "table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Designation</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee:${allemplist}">
+            <td th:text="${employee'name}"></td>
+            <td th:text="${employee'email}"></td>
+            <td th:text="${employee'age}"></td>
+            <td th:text="${employee'designation}"></td>
+            <td><a href="@{/updateform/{id}(id=${employee.id})}" class="btn btn-primary">Update</a></td>
+            <td><a href="@{/delete/{id}(id=${employee.id})}" class="btn btn-primary">Delete</a></td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
